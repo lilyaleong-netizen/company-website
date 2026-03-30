@@ -1,0 +1,207 @@
+@import 'variables';
+@import 'animations';
+
+// ── Navbar 关键定位样式（全局保证，避免 scoped CSS 时序失效）──
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: var(--navbar-height);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  max-width: #{$wide};
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+@media (max-width: #{$mobile}) {
+  .navbar-links  { display: none; }
+  .navbar-hamburger { display: flex; }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+html {
+  // 用 clip 代替 hidden：不创建滚动容器，避免 body 变成 scroll container 导致 position:fixed 失效
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: $text-dark;
+  line-height: 1.6;
+  background: $white;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul { list-style: none; }
+
+.container {
+  max-width: $desktop;
+  margin: 0 auto;
+  padding: 0 24px;
+  @include mobile {
+    padding: 0 16px;
+  }
+}
+
+.container-wide {
+  max-width: $wide;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 80px 0;
+  @include mobile {
+    padding: 50px 0;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &-primary {
+    background: $primary-color;
+    color: $white;
+    &:hover {
+      background: $primary-dark;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  &-accent {
+    background: $accent-color;
+    color: $white;
+    &:hover {
+      background: darken($accent-color, 10%);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  &-outline {
+    border: 2px solid $primary-color;
+    color: $primary-color;
+    background: transparent;
+    &:hover {
+      background: $primary-color;
+      color: $white;
+    }
+  }
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: $primary-color;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: $text-dark;
+  line-height: 1.2;
+  margin-bottom: 20px;
+
+  span {
+    color: $primary-color;
+  }
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: $text-light;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+// Grid
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Divider
+.divider {
+  width: 60px;
+  height: 4px;
+  background: $primary-color;
+  border-radius: 2px;
+  margin: 16px 0 24px;
+
+  &-center {
+    margin: 16px auto 24px;
+  }
+}

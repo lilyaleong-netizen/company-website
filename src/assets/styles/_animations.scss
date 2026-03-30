@@ -1,0 +1,80 @@
+// Scroll animate base
+// 初始状态仅用 opacity（不用 transform），避免 transform 影响 position:fixed 的定位
+.scroll-animate {
+  opacity: 0;
+  &.is-visible {
+    animation: scrollAnimUp 0.6s ease-out var(--animate-delay, 0ms) both;
+  }
+}
+
+.scroll-animate-left {
+  opacity: 0;
+  &.is-visible {
+    animation: scrollAnimLeft 0.7s ease-out var(--animate-delay, 0ms) both;
+  }
+}
+
+.scroll-animate-right {
+  opacity: 0;
+  &.is-visible {
+    animation: scrollAnimRight 0.7s ease-out var(--animate-delay, 0ms) both;
+  }
+}
+
+@keyframes scrollAnimUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollAnimLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scrollAnimRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+// Page transition
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+// Hover lift
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+// Fade in keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}

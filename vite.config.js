@@ -1,8 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
-import compression from 'vite-plugin-compression2'
-//import sitemap from 'vite-plugin-sitemap'
 import { blogPosts } from './src/data/blogPosts.js'
 
 const SITE_URL = 'https://[SITE_DOMAIN]'
@@ -14,8 +12,7 @@ export default defineConfig(({ command, isSsrBuild }) => ({
   plugins: [
     vue(),
 
-    //Sitemap
-    !isSsrBuild && sitemap({
+    
       hostname: SITE_URL,
       dynamicRoutes,
       changefreq: 'weekly',

@@ -2,26 +2,22 @@
   "name": "company-website",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite-ssg build && cp public/robots.txt dist/robots.txt",
     "preview": "vite preview"
   },
- "dependencies": {
-  "@emailjs/browser": "^4.4.1",
-  "@unhead/vue": "^2.1.10",
-  "sass": "^1.97.3",
-  "vite-ssg": "^28.3.0",
-  "vite-plugin-pages": "^0.32.0",
-  "vue": "^3.5.25",
-  "vue-router": "^4.6.4"
-},
-"devDependencies": {
-  "@vitejs/plugin-vue": "^6.0.2"
-}
-    "vite": "^7.3.1",
-    "vite-plugin-compression2": "^2.5.0",
-    "vite-plugin-sitemap": "^0.8.2"
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@unhead/vue": "^2.1.10",
+    "sass": "^1.97.3",
+    "vite-ssg": "^28.3.0",
+    "vite-plugin-pages": "^0.32.0",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.2",
+    "vite": "^7.3.1"
   }
 }

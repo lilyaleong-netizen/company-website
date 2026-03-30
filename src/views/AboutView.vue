@@ -107,12 +107,12 @@
       </div>
     </section>
 
-    <BottomCTA />
+    
   </div>
 </template>
 
 <script setup>
-import BottomCTA from '@/components/home/BottomCTA.vue'
+
 import PageHero from '@/components/layout/PageHero.vue'
 import { useSeoMeta } from '@/composables/useSeoMeta'
 import { useBreadcrumbSchema } from '@/composables/useStructuredData'

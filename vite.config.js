@@ -14,7 +14,7 @@ export default defineConfig(({ command, isSsrBuild }) => ({
   plugins: [
     vue(),
 
-    // Sitemap（仅 client build 时生成一次）
+    //Sitemap
     !isSsrBuild && sitemap({
       hostname: SITE_URL,
       dynamicRoutes,

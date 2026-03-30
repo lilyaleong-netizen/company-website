@@ -128,3 +128,4 @@ The `npm run build` command generates a `dist/` directory with pre-rendered stat
 - EmailJS for contact form
 - vite-plugin-sitemap
 - vite-plugin-compression2
+

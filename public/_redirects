@@ -1,0 +1,5 @@
+# Blog redirects (add old → new URL mappings here)
+# /blog/old-path  /blog/new-path  301
+
+# SPA fallback
+/*  /index.html  200

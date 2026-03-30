@@ -1,0 +1,15 @@
+# =============================================
+# Cloudflare Pages - HTTP 安全头配置
+# 文件位置: Vue 项目的 public/_headers
+# =============================================
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# 静态资源长缓存 (JS/CSS 文件名通常带 hash，可以长期缓存)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

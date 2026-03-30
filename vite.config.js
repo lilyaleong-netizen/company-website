@@ -1,75 +1,48 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { fileURLToPath, URL } from 'node:url'
-import { blogPosts } from './src/data/blogPosts.js'
+import Pages from 'vite-plugin-pages'
+import Components from 'unplugin-vue-components/vite'
+import { VitePWA } from 'vite-plugin-pwa'
+import VueI18n from '@intlify/vite-plugin-vue-i18n'
+import { resolve } from 'path'
+import AutoImport from 'unplugin-auto-import/vite'
+import viteSSG from 'vite-ssg'
 
-const SITE_URL = 'https://[SITE_DOMAIN]'
-const staticRoutes = ['/about', '/services', '/capability', '/blog', '/contact']
-const blogRoutes = blogPosts.map(p => `/blog/${p.slug}`)
-const dynamicRoutes = [...staticRoutes, ...blogRoutes]
-
-export default defineConfig(({ command, isSsrBuild }) => ({
+// https://vitejs.dev/config/
+export default defineConfig({
   plugins: [
     vue(),
-
-    
-      hostname: SITE_URL,
-      dynamicRoutes,
-      changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date(),
-      generateRobotsTxt: false,  // 关掉它的自动生成
+    Pages(),
+    Components({
+      dirs: ['src/components'],
+      dts: true
     }),
-
-    // Gzip 压缩（仅 client build）
-    !isSsrBuild && compression({
-      algorithm: 'gzip',
-      exclude: [/\.(png|jpe?g|gif|webp|svg|ico)$/],
-      threshold: 1024,
+    VitePWA(),
+    VueI18n({
+      include: resolve(__dirname, 'src/locales/**'),
+      runtimeOnly: false
     }),
+    AutoImport({
+      imports: [
+        'vue',
+        'vue-router',
+        'vue-i18n',
+        '@vueuse/head',
+        '@vueuse/core'
+      ],
+      dts: 'src/auto-imports.d.ts',
+      dirs: ['src/composables', 'src/store'],
+      vueTemplate: true
+    })
+    // 我们已经在这里彻底移除了 sitemap 插件的所有相关代码
+  ],
 
-    // Brotli 压缩（仅 client build）
-    !isSsrBuild && compression({
-      algorithm: 'brotliCompress',
-      exclude: [/\.(png|jpe?g|gif|webp|svg|ico)$/],
-      threshold: 1024,
-    }),
-  ].filter(Boolean),
-
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  },
-
-  css: {
-    preprocessorOptions: {
-      scss: {
-        silenceDeprecations: ['import', 'global-builtin', 'color-functions']
-      }
-    }
-  },
-
-  build: {
-    rollupOptions: {
-      output: isSsrBuild ? {} : {
-        // 分包策略（仅 client）
-        manualChunks: {
-          'unhead': ['@unhead/vue'],
-        }
-      }
-    },
-    cssCodeSplit: true,
-    chunkSizeWarningLimit: 600,
-    minify: 'esbuild',
-    target: 'es2015',
-  },
-
+  // vite-ssg options
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
-    includedRoutes(paths) {
-      return [...paths, ...dynamicRoutes]
-    },
-  },
-}))
+    critters: {
+      pruneSource: true
+    }
+  }
+})

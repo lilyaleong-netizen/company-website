@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import Pages from 'vite-plugin-pages'
+
 import Components from 'unplugin-vue-components/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
@@ -12,7 +12,7 @@ import viteSSG from 'vite-ssg'
 export default defineConfig({
   plugins: [
     vue(),
-    Pages(),
+    
     Components({
       dirs: ['src/components'],
       dts: true

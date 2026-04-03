@@ -1,18 +1,20 @@
 <template>
   <div class="services-page">
     <PageHero
-      title="Our Services"
+      title="Our Solutions"
       label="What We Offer"
-      subtitle="[SERVICES_SUBTITLE] — Replace with your services page subtitle."
+      subtitle="Flexible cobot welding solutions designed for modern manufacturing."
       bg-image="/page-hero-bg.jpg"
     />
 
-    <!-- Service Sections - alternate layout -->
+    <!-- Service Sections -->
     <template v-for="(service, index) in services" :key="service.id">
       <section class="section service-section" :class="index % 2 !== 0 ? 'service-section-alt' : ''">
         <div class="container">
           <div class="service-layout" :class="index % 2 !== 0 ? 'service-layout-reverse' : ''">
-            <!-- Images Grid -->
+            
+            <!-- Images (commented out for now) -->
+            <!--
             <div
               class="service-images"
               v-scroll-animate="{ direction: index % 2 !== 0 ? 'right' : 'left' }"
@@ -27,6 +29,7 @@
                 </div>
               </div>
             </div>
+            -->
 
             <!-- Content -->
             <div
@@ -37,6 +40,7 @@
               <h2 class="section-title">{{ service.title }}</h2>
               <div class="divider"></div>
               <p class="service-desc">{{ service.description }}</p>
+
               <ul class="service-features">
                 <li v-for="feat in service.features" :key="feat">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -45,6 +49,7 @@
                   {{ feat }}
                 </li>
               </ul>
+
               <RouterLink to="/contact" class="btn btn-primary">
                 Get a Quote
               </RouterLink>
@@ -54,32 +59,35 @@
       </section>
     </template>
 
-    <!-- Factory View -->
+    <!-- Workshop View -->
     <section class="section factory-section" style="background: var(--bg-light);">
       <div class="container">
         <div class="section-header" v-scroll-animate>
-          <p class="section-label">Our Facility</p>
-          <h2 class="section-title">Factory <span>View</span></h2>
+          <p class="section-label">Production Environment</p>
+          <h2 class="section-title">Workshop <span>View</span></h2>
           <div class="divider divider-center"></div>
         </div>
 
+        <!-- Factory Image Sections (commented out for now) -->
+        <!--
         <div class="factory-block" v-scroll-animate>
-          <h3 class="factory-block-title">[FACTORY_1_TITLE]</h3>
+          <h3 class="factory-block-title">Welding Integration Area</h3>
           <div class="factory-grid">
-            <div class="factory-img hover-lift" v-for="(img, i) in pcbFactoryImgs" :key="`pcb-${i}`">
-              <img :src="img" :alt="`[FACTORY_1_TITLE] ${i + 1}`" loading="lazy" />
+            <div class="factory-img hover-lift" v-for="(img, i) in weldingImgs" :key="i">
+              <img :src="img" :alt="`Welding system ${i + 1}`" loading="lazy" />
             </div>
           </div>
         </div>
 
         <div class="factory-block" v-scroll-animate>
-          <h3 class="factory-block-title">[FACTORY_2_TITLE]</h3>
+          <h3 class="factory-block-title">Assembly & Testing Area</h3>
           <div class="factory-grid">
-            <div class="factory-img hover-lift" v-for="(img, i) in asmFactoryImgs" :key="`asm-${i}`">
-              <img :src="img" :alt="`[FACTORY_2_TITLE] ${i + 1}`" loading="lazy" />
+            <div class="factory-img hover-lift" v-for="(img, i) in assemblyImgs" :key="i">
+              <img :src="img" :alt="`Assembly ${i + 1}`" loading="lazy" />
             </div>
           </div>
         </div>
+        -->
       </div>
     </section>
 
@@ -94,31 +102,21 @@ import PageHero from '@/components/layout/PageHero.vue'
 import { useSeoMeta } from '@/composables/useSeoMeta'
 import { useBreadcrumbSchema } from '@/composables/useStructuredData'
 
-const pcbFactoryImgs = [
-  '/images/factory-pcb-1.jpg',
-  '/images/factory-pcb-2.jpg',
-  '/images/factory-pcb-3.jpg',
-  '/images/factory-pcb-4.jpg',
-]
-
-const asmFactoryImgs = [
-  '/images/factory-asm-1.jpg',
-  '/images/factory-asm-2.jpg',
-  '/images/factory-asm-3.jpg',
-  '/images/factory-asm-4.jpg',
-]
-
+// ✅ SEO优化
 useSeoMeta({
-  title: 'Our Services',
-  description: '[SERVICES_SEO_DESC] — Replace with your services page SEO description.',
+  title: 'Cobot Welding Solutions',
+  description: 'Explore Yeld Tech cobot welding solutions including mobile welding systems, plug-and-play deployment, and no-programming automation.',
   path: '/services',
 })
-useBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }])
+
+useBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/services' }
+])
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/_variables.scss';
-
 
 .service-section {
   background: $white;

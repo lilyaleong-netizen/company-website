@@ -3,15 +3,19 @@
     <div class="bottom-cta-bg"></div>
     <div class="container">
       <div class="bottom-cta-content" v-scroll-animate>
+        <!-- 业务标签 -->
         <p class="bottom-cta-eyebrow">Get In Touch</p>
-        <h2 class="bottom-cta-title">We would love to hear from you!</h2>
+        <!-- 主标题 -->
+        <h2 class="bottom-cta-title">Connect with Our Cobot Welding Experts</h2>
+        <!-- 描述文本 -->
         <p class="bottom-cta-text">
-          If you would like to know more details, please contact me online.
-          [CTA_DESC] — Replace with your call-to-action description.
+          Learn how our collaborative welding platforms can boost safety, precision, and efficiency in your production line.
+          Experience the future of robotic welding today.
         </p>
+        <!-- 按钮 -->
         <div class="bottom-cta-actions">
           <RouterLink to="/contact" class="btn btn-accent">Contact Us</RouterLink>
-          <RouterLink to="/services" class="btn btn-outline-light">View Services</RouterLink>
+          <RouterLink to="/services" class="btn btn-outline-light">View Solutions</RouterLink>
         </div>
       </div>
     </div>
@@ -27,7 +31,6 @@
   overflow: hidden;
   background: linear-gradient(135deg, #080c12 0%, #0d1828 60%, #060a12 100%);
 
-  // 底部：渐变融入 Footer 深色背景 ($bg-dark = #1A1A2E)
   &::after {
     content: '';
     position: absolute;
@@ -43,7 +46,8 @@
   &-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/cta-pcb.jpg');
+    /* 后续替换为焊接场景图 */
+    background-image: url('/images/cta-welding.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.45;

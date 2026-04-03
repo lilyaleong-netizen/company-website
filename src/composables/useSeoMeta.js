@@ -1,19 +1,12 @@
 import { useHead } from '@unhead/vue'
 
-// TODO: Replace with your actual values
-const SITE_URL = 'https://[SITE_DOMAIN]'
-const SITE_NAME = '[COMPANY_NAME]'
-const DEFAULT_OG_IMAGE = 'https://[SITE_DOMAIN]/logo.png'
+// ✅ 已替换为真实信息
+const SITE_URL = 'https://yeld-tech.com'
+const SITE_NAME = 'Yeld Tech'
+const DEFAULT_OG_IMAGE = 'https://yeld-tech.com/logo.png'
 
 /**
  * Inject full SEO meta tags per page
- * @param {Object} options
- * @param {string} options.title         Page title (without site name)
- * @param {string} options.description   Page description (120-160 chars optimal)
- * @param {string} [options.path]        Path for canonical URL (e.g. '/about')
- * @param {string} [options.ogImage]     OG image URL
- * @param {string} [options.ogType]      'website' | 'article', default website
- * @param {Object} [options.article]     Article extra fields { publishedTime, author, section }
  */
 export function useSeoMeta(options) {
   const {
@@ -32,7 +25,10 @@ export function useSeoMeta(options) {
   const meta = [
     // Basic
     { name: 'description', content: description },
-    { name: 'keywords', content: '[SEO_KEYWORDS]' },
+
+    // ✅ 已优化关键词（结合你的产品）
+    { name: 'keywords', content: 'cobot welding platform, welding robot, mobile welding car, plug and play welding system, no programming welding robot, industrial automation welding' },
+
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: SITE_NAME },
 

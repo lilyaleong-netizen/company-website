@@ -9,7 +9,7 @@
         <h2 class="bottom-cta-title">Connect with Our Cobot Welding Experts</h2>
         <!-- 描述文本 -->
         <p class="bottom-cta-text">
-          Learn how our collaborative welding platforms can boost safety, precision, and efficiency in your production line.
+          Learn how our collaborative welding platforms can boost flexibility, precision, and efficiency in your production line.
           Experience the future of robotic welding today.
         </p>
         <!-- 按钮 -->

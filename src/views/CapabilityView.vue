@@ -1,7 +1,7 @@
 <template>
   <div class="capability-page">
     <PageHero
-      title="Manufacturing &amp; Assembly"
+      title="Manufacturing & Assembly"
       label="Production Capability"
       subtitle="[CAPABILITY_SUBTITLE] — Replace with your key capability highlights."
       bg-image="/page-hero-bg.jpg"
@@ -38,9 +38,10 @@
           </p>
         </div>
 
-        <!-- 左图 + 右卡片网格 -->
+        <!-- Left Image + Right Card Grid -->
         <div class="cap-layout">
           <div class="cap-image" v-scroll-animate="{ direction: 'left' }">
+            <!-- Add image here when available -->
             <img src="/images/cap-pcb-types.jpg" alt="[CAPABILITY_IMAGE_ALT]" loading="lazy" />
           </div>
           <div class="cap-grid" v-scroll-animate="{ direction: 'right', delay: 150 }">
@@ -69,6 +70,7 @@
 
         <div class="smt-layout">
           <div class="smt-image" v-scroll-animate="{ direction: 'left' }">
+            <!-- Add image here when available -->
             <img src="/images/capability-3333.jpg" alt="[SECONDARY_CAP_IMAGE_ALT]" loading="lazy" />
             <div class="smt-badge">
               <span>±0.03mm</span>
@@ -183,7 +185,6 @@ const equipment = [
 <style lang="scss" scoped>
 @import '@/assets/styles/_variables.scss';
 
-
 .key-stats {
   background: $primary-color;
   padding: 40px 0;
@@ -234,156 +235,5 @@ const equipment = [
   align-items: center;
 
   @include tablet { grid-template-columns: 1fr 1fr; gap: 32px; }
-  @include mobile { grid-template-columns: 1fr; }
-}
-
-.cap-image {
-  img {
-    width: 100%;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    display: block;
-  }
-}
-
-.cap-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-
-  @include mobile { grid-template-columns: 1fr 1fr; }
-}
-
-.cap-card {
-  background: $white;
-  border: 1px solid #e8ecf0;
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  text-align: center;
-  cursor: default;
-  transition: all var(--transition);
-
-  &:hover {
-    border-color: $primary-color;
-    background: rgba(0, 102, 204, 0.03);
-  }
-
-  &-icon {
-    font-size: 22px;
-    margin-bottom: 6px;
-  }
-
-  &-label {
-    font-size: 11px;
-    color: $text-light;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
-    font-weight: 600;
-  }
-
-  &-value {
-    font-size: 13px;
-    font-weight: 700;
-    color: $primary-color;
-    line-height: 1.4;
-  }
-}
-
-.smt-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: start;
-
-  @include mobile { grid-template-columns: 1fr; }
-}
-
-.smt-image {
-  position: relative;
-
-  img {
-    width: 100%;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-  }
-}
-
-.smt-badge {
-  position: absolute;
-  bottom: 20px;
-  right: -16px;
-  background: $accent-color;
-  color: $white;
-  padding: 14px 20px;
-  border-radius: var(--radius);
-  text-align: center;
-  box-shadow: var(--shadow-md);
-
-  span { display: block; font-size: 24px; font-weight: 700; }
-  small { font-size: 12px; opacity: 0.9; }
-
-  @include mobile { right: 10px; bottom: 10px; }
-}
-
-.smt-specs {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.smt-spec-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid #eee;
-
-  &:last-child { border-bottom: none; }
-
-  &-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    color: $text-dark;
-    font-weight: 500;
-  }
-
-  &-icon { font-size: 18px; }
-
-  &-value {
-    font-size: 15px;
-    font-weight: 700;
-    color: $primary-color;
-    text-align: right;
-    max-width: 200px;
-  }
-}
-
-.equipment-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-
-  @include tablet { grid-template-columns: repeat(2, 1fr); }
-  @include mobile { grid-template-columns: 1fr; }
-}
-
-.equipment-item {
-  background: $white;
-  border-radius: var(--radius);
-  padding: 28px 24px;
-  box-shadow: var(--shadow-sm);
-  text-align: center;
-  border-top: 3px solid transparent;
-  cursor: default;
-  transition: all var(--transition);
-
-  &:hover { border-top-color: $primary-color; }
-
-  &-icon { font-size: 40px; margin-bottom: 16px; }
-  h4 { font-size: 17px; font-weight: 700; color: $text-dark; margin-bottom: 10px; }
-  p { font-size: 14px; color: $text-light; line-height: 1.7; }
-}
-</style>
+  @
+  

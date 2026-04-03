@@ -19,8 +19,8 @@ import BottomCTA from '@/components/home/BottomCTA.vue'
 import { useSeoMeta } from '@/composables/useSeoMeta'
 
 useSeoMeta({
-  title: '[HOME_PAGE_TITLE]',
-  description: '[HOME_PAGE_DESCRIPTION] — Replace with your home page SEO description.',
+  title: 'Yeld Tech | Professional mobile welding Solutions',
+  description: 'Yeld Tech provides advanced cobot welding platforms featuring mobile welding systems, no programming required, and true plug-and-play operation—designed to simplify automation.',
   path: '/',
   ogType: 'website',
 })

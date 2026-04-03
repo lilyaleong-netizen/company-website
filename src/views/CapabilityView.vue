@@ -1,10 +1,11 @@
 <template>
   <div class="capability-page">
+    <!-- Hero Section -->
     <PageHero
-      title="Manufacturing & Assembly"
+      title="Cobot Welding Platform"
       label="Production Capability"
-      subtitle="[CAPABILITY_SUBTITLE] — Replace with your key capability highlights."
-      bg-image="/page-hero-bg.jpg"
+      subtitle="Discover the collaborative welding solutions that improve efficiency, safety, and precision on your production line."
+      bg-image="/images/page-hero-welding.jpg"
     />
 
     <!-- Key Stats -->
@@ -34,7 +35,7 @@
           <h2 class="section-title">Primary <span>Capabilities</span></h2>
           <div class="divider divider-center"></div>
           <p class="section-subtitle" style="margin: 0 auto;">
-            [CAPABILITY_DESC] — Replace with your capability description.
+            Our cobot welding platforms excel in precision, repeatability, and safety for industrial welding operations.
           </p>
         </div>
 
@@ -42,12 +43,12 @@
         <div class="cap-layout">
           <div class="cap-image" v-scroll-animate="{ direction: 'left' }">
             <!-- Add image here when available -->
-            <img src="/images/cap-pcb-types.jpg" alt="[CAPABILITY_IMAGE_ALT]" loading="lazy" />
+            <img src="/images/cap-welding-main.jpg" alt="Cobot Welding Platform in Action" loading="lazy" />
           </div>
           <div class="cap-grid" v-scroll-animate="{ direction: 'right', delay: 150 }">
             <div
               class="cap-card hover-lift"
-              v-for="(item, index) in pcbCapabilities"
+              v-for="(item, index) in cobotCapabilities"
               :key="item.label"
             >
               <div class="cap-card-icon">{{ item.icon }}</div>
@@ -64,21 +65,21 @@
       <div class="container">
         <div class="section-header" v-scroll-animate>
           <p class="section-label">Secondary Capabilities</p>
-          <h2 class="section-title">Secondary <span>Capabilities</span></h2>
+          <h2 class="section-title">Additional <span>Capabilities</span></h2>
           <div class="divider divider-center"></div>
         </div>
 
         <div class="smt-layout">
           <div class="smt-image" v-scroll-animate="{ direction: 'left' }">
             <!-- Add image here when available -->
-            <img src="/images/capability-3333.jpg" alt="[SECONDARY_CAP_IMAGE_ALT]" loading="lazy" />
+            <img src="/images/cap-welding-secondary.jpg" alt="Secondary Welding Setup" loading="lazy" />
             <div class="smt-badge">
-              <span>±0.03mm</span>
-              <small>Placement Precision</small>
+              <span>±0.5mm</span>
+              <small>Welding Precision</small>
             </div>
           </div>
           <div class="smt-specs" v-scroll-animate="{ direction: 'right', delay: 150 }">
-            <div class="smt-spec-item" v-for="item in smtCapabilities" :key="item.label">
+            <div class="smt-spec-item" v-for="item in cobotSecondaryCapabilities" :key="item.label">
               <div class="smt-spec-item-label">
                 <span class="smt-spec-item-icon">{{ item.icon }}</span>
                 {{ item.label }}
@@ -119,18 +120,39 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { pcbCapabilities, smtCapabilities, keyStats } from '@/data/capabilities.js'
 import BottomCTA from '@/components/home/BottomCTA.vue'
 import PageHero from '@/components/layout/PageHero.vue'
 import { useSeoMeta } from '@/composables/useSeoMeta'
 import { useBreadcrumbSchema } from '@/composables/useStructuredData'
 
+// 数据示例：Cobot Welding Platform 风格
+const keyStats = [
+  { label: 'Projects Completed', value: 120, decimal: false, suffix: '+' },
+  { label: 'Cobot Units', value: 85, decimal: false, suffix: '' },
+  { label: 'Precision (mm)', value: 0.5, decimal: true, suffix: ' mm' },
+  { label: 'Customer Satisfaction', value: 98, decimal: false, suffix: '%' },
+]
+
+const cobotCapabilities = [
+  { icon: '🤖', label: 'Collaborative Welding', value: 'High Efficiency' },
+  { icon: '⚡', label: 'Automated Safety', value: 'Certified Protocols' },
+  { icon: '🛠️', label: 'Versatile Materials', value: 'Steel, Aluminum' },
+  { icon: '⏱️', label: 'Cycle Time', value: 'Reduced by 40%' },
+]
+
+const cobotSecondaryCapabilities = [
+  { icon: '🔧', label: 'Custom Fixtures', value: 'Adaptable Setup' },
+  { icon: '📐', label: 'Precision Control', value: '±0.5mm' },
+  { icon: '🌡️', label: 'Thermal Management', value: 'Optimized Heat' },
+]
+
 useSeoMeta({
-  title: 'Our Capabilities',
-  description: '[CAPABILITY_SEO_DESC] — Replace with your capability page SEO description.',
+  title: 'Cobot Welding Platform Capabilities',
+  description: 'Explore the capabilities of our collaborative welding platforms for industrial production.',
   path: '/capability',
 })
-useBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Capability', url: '/capability' }])
+
+useBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Capabilities', url: '/capability' }])
 
 // CountUp component inline
 const CountUp = {
@@ -173,12 +195,12 @@ const CountUp = {
 }
 
 const equipment = [
-  { icon: '🔬', name: '[EQUIPMENT_1_NAME]', desc: '[EQUIPMENT_1_DESC]' },
-  { icon: '☢️', name: '[EQUIPMENT_2_NAME]', desc: '[EQUIPMENT_2_DESC]' },
-  { icon: '🤖', name: '[EQUIPMENT_3_NAME]', desc: '[EQUIPMENT_3_DESC]' },
-  { icon: '🔥', name: '[EQUIPMENT_4_NAME]', desc: '[EQUIPMENT_4_DESC]' },
-  { icon: '🌊', name: '[EQUIPMENT_5_NAME]', desc: '[EQUIPMENT_5_DESC]' },
-  { icon: '🧪', name: '[EQUIPMENT_6_NAME]', desc: '[EQUIPMENT_6_DESC]' },
+  { icon: '🤖', name: 'Cobot Arm', desc: 'Collaborative robotic welding arm for precision tasks.' },
+  { icon: '🛠️', name: 'Welding Station', desc: 'Fully automated welding station with safety enclosures.' },
+  { icon: '⚡', name: 'Power Supply', desc: 'Stable and efficient power units for continuous operation.' },
+  { icon: '🌡️', name: 'Thermal Sensors', desc: 'Monitor and control heat during welding cycles.' },
+  { icon: '📐', name: 'Positioning Table', desc: 'High-precision fixture for repeatable positioning.' },
+  { icon: '🔧', name: 'Tooling Kit', desc: 'Custom tools and jigs for versatile applications.' },
 ]
 </script>
 
@@ -235,5 +257,74 @@ const equipment = [
   align-items: center;
 
   @include tablet { grid-template-columns: 1fr 1fr; gap: 32px; }
-  @
-  
+
+  .cap-image img { width: 100%; border-radius: var(--radius); }
+
+  .cap-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cap-card {
+    background: $white;
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    color: $black;
+    transition: all var(--transition);
+    cursor: default;
+    &:hover { transform: translateY(-6px); }
+    .cap-card-icon { font-size: 32px; margin-bottom: 12px; }
+    .cap-card-label { font-weight: 700; margin-bottom: 6px; }
+    .cap-card-value { font-size: 15px; color: $accent-color; }
+  }
+}
+
+.smt-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 48px;
+  align-items: center;
+  @include tablet { grid-template-columns: 1fr 1fr; gap: 32px; }
+
+  .smt-image img { width: 100%; border-radius: var(--radius); }
+  .smt-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: $accent-color;
+    color: $white;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    span { font-weight: 700; margin-right: 4px; }
+    small { font-size: 11px; opacity: 0.8; }
+  }
+
+  .smt-specs { display: flex; flex-direction: column; gap: 16px; }
+
+  .smt-spec-item { display: flex; justify-content: space-between; }
+  .smt-spec-item-label { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .smt-spec-item-value { font-weight: 700; color: $accent-color; }
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  @include tablet { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr; }
+
+  .equipment-item {
+    background: $white;
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    transition: all var(--transition);
+    &:hover { transform: translateY(-6px); }
+    .equipment-item-icon { font-size: 36px; margin-bottom: 12px; }
+    h4 { font-weight: 700; margin-bottom: 8px; }
+    p { color: $text-light; font-size: 14px; line-height: 1.5; }
+  }
+}
+</style>

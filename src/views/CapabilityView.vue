@@ -7,7 +7,6 @@
       bg-image="@/assets/images/cap-welding-bg.jpg"
     />
 
-    <!-- Key Stats -->
     <section class="key-stats">
       <div class="container">
         <div class="key-stats-grid">
@@ -26,7 +25,6 @@
       </div>
     </section>
 
-    <!-- Primary Capabilities -->
     <section class="section">
       <div class="container">
         <div class="section-header" v-scroll-animate>
@@ -38,7 +36,6 @@
           </p>
         </div>
 
-        <!-- Left Image + Right Card Grid -->
         <div class="cap-layout">
           <div class="cap-image" v-scroll-animate="{ direction: 'left' }">
             <img src="@/assets/images/cap-welding-main.jpg" alt="Cobot Welding Platform" loading="lazy" />
@@ -58,7 +55,6 @@
       </div>
     </section>
 
-    <!-- Secondary Capabilities -->
     <section class="section" style="background: var(--bg-light);">
       <div class="container">
         <div class="section-header" v-scroll-animate>
@@ -88,7 +84,6 @@
       </div>
     </section>
 
-    <!-- Equipment & Process -->
     <section class="section">
       <div class="container">
         <div class="section-header" v-scroll-animate>
@@ -130,41 +125,31 @@ useSeoMeta({
 })
 useBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Capability', url: '/capability' }])
 
-// CountUp component inline
 const CountUp = {
   props: { target: Number, decimal: Boolean, suffix: String },
   setup(props) {
     const displayed = ref(0)
     const el = ref(null)
     let started = false
-
     const animate = () => {
       if (started) return
       started = true
       const end = props.target
-      const isDecimal = props.decimal
       const duration = 1800
       const start = performance.now()
-
       const step = (now) => {
         const progress = Math.min((now - start) / duration, 1)
-        const eased = 1 - Math.pow(1 - progress, 3)
-        const current = eased * end
-        displayed.value = isDecimal
-          ? parseFloat(current.toFixed(2))
-          : Math.round(current)
+        displayed.value = props.decimal ? parseFloat((end * progress).toFixed(2)) : Math.round(end * progress)
         if (progress < 1) requestAnimationFrame(step)
       }
       requestAnimationFrame(step)
     }
-
     onMounted(() => {
       const observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) { animate(); observer.disconnect() }
       }, { threshold: 0.5 })
       if (el.value) observer.observe(el.value)
     })
-
     return { displayed, el }
   },
   template: `<span ref="el">{{ displayed }}{{ suffix }}</span>`
@@ -180,55 +165,26 @@ const equipment = [
 ]
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import '@/assets/styles/_variables.scss';
 
-// Keep existing styles, but ensure all paths use correct imports
-.key-stats {
-  background: $primary-color;
-  padding: 40px 0;
+.capability-page { font-family: $font-base; }
 
-  &-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    @include tablet { grid-template-columns: repeat(2, 1fr); }
-    @include mobile { grid-template-columns: 1fr 1fr; }
-  }
-}
+.key-stats { background: $primary-color; padding: 40px 0; }
 
-.key-stat-item {
-  text-align: center;
-  padding: 20px;
-  border-right: 1px solid rgba(255,255,255,0.15);
-  color: $white;
+.key-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
 
-  &:last-child { border-right: none; }
+.key-stat-item { text-align: center; padding: 20px; border-right: 1px solid rgba(255,255,255,0.15); color: $white; }
 
-  &-value {
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 8px;
-    color: $white;
-  }
+.key-stat-item:last-child { border-right: none; }
 
-  &-label {
-    font-size: 13px;
-    color: rgba(255,255,255,0.75);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-}
+.section-header { text-align: center; margin-bottom: 48px; }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 48px;
-  .divider { margin: 16px auto 24px; }
-}
+.cap-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 48px; }
 
-.cap-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.8fr;
-  gap: 48px;
- 
+.cap-image img, .smt-image img { width: 100%; display: block; }
+
+.cap-grid, .smt-specs, .equipment-grid { display: grid; gap: 24px; }
+
+.equipment-item { text-align: center; padding: 20px; background: $white; border-radius: 8px; }
+</style>

@@ -9,17 +9,21 @@
         class="page-hero-bg-img"
       />
       <div class="page-hero-overlay"></div>
-      <!-- 电路板纹理 SVG 图案 -->
       <div class="page-hero-circuit"></div>
     </div>
 
     <!-- 内容 -->
     <div class="page-hero-content container">
       <div class="page-hero-text">
-        <p class="page-hero-label">{{ label || '[COMPANY_NAME]' }}</p>
-        <h1 class="page-hero-title">{{ title }}</h1>
+        <!-- 业务标签 -->
+        <p class="page-hero-label">{{ label || 'Cobot Welding Solutions' }}</p>
+        <!-- 主标题 -->
+        <h1 class="page-hero-title">{{ title || 'Flexible Collaborative Welding Platform' }}</h1>
         <div class="page-hero-divider"></div>
-        <p v-if="subtitle" class="page-hero-subtitle">{{ subtitle }}</p>
+        <!-- 副标题 -->
+        <p v-if="subtitle" class="page-hero-subtitle">
+          {{ subtitle || 'Empowering manufacturers with safe, precise, and efficient robotic welding technology.' }}
+        </p>
       </div>
     </div>
 
@@ -34,10 +38,10 @@
 
 <script setup>
 defineProps({
-  title: { type: String, required: true },
+  title: { type: String, default: '' },
   label: { type: String, default: '' },
   subtitle: { type: String, default: '' },
-  bgImage: { type: String, default: '' },
+  bgImage: { type: String, default: '' }, // 后续替换为焊接场景图片
 })
 </script>
 
@@ -50,14 +54,12 @@ defineProps({
   display: flex;
   align-items: center;
   overflow: hidden;
-  // 向上延伸覆盖 navbar（与 HeroBanner 相同原理）
   margin-top: calc(-1 * var(--navbar-height));
 
   @include mobile {
     min-height: 280px;
   }
 
-  // ── 背景 ──
   &-bg {
     position: absolute;
     inset: 0;
@@ -82,7 +84,6 @@ defineProps({
     );
   }
 
-  // 电路板纹理（纯 CSS）
   &-circuit {
     position: absolute;
     inset: 0;
@@ -95,7 +96,6 @@ defineProps({
     mask-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, transparent);
   }
 
-  // ── 内容 ──
   &-content {
     position: relative;
     z-index: 2;
@@ -152,7 +152,6 @@ defineProps({
     max-width: 560px;
   }
 
-  // ── 底部波浪 ──
   &-wave {
     position: absolute;
     bottom: -1px;
